@@ -29,7 +29,23 @@ public class ShipmentTypePdfView extends AbstractPdfView{
 		List<ShipmentType> list=(List<ShipmentType>) model.get("list");
 		Paragraph p1=new Paragraph("hello welcome to pdf Page....!");
 		document.add(p1);
-		PdfPTable p=new PdfPTable(6);
+		PdfPTable table=new PdfPTable(6);
+		table.addCell("Id");
+		table.addCell("Mode");
+		table.addCell("Code");
+		table.addCell("Enable");
+		table.addCell("Grade");
+		table.addCell("Note");
+		for(ShipmentType s:list)
+		{
+			table.addCell(s.getId().toString());
+			table.addCell(s.getShipmentMode());
+			table.addCell(s.getShipmentCode());
+			table.addCell(s.getEnableShipment());
+			table.addCell(s.getShipmentGrade());
+			table.addCell(s.getNote());
+		}
+		document.add(table);
 	}
 }
 
